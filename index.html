@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深伝導ボディメソッドアカデミー｜エステ開業を本気で目指す方へ</title>
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --dark: #1a1a1a;
+      --gray: #555;
+      --bg: #fdfaf5;
+      --white: #fff;
+      --accent: #8B5E3C;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; background: var(--bg); color: var(--dark); line-height: 1.8; }
+
+    /* ─── HEADER ─── */
+    header { background: var(--dark); padding: 14px 24px; text-align: center; }
+    header p { color: var(--gold-light); font-size: 12px; letter-spacing: 3px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, #1a1a1a 0%, #3a2a1a 100%);
+      color: var(--white);
+      padding: 90px 24px 110px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(201,168,76,0.18) 0%, transparent 70%);
+    }
+    .hero-en {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: var(--gold);
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 5.5vw, 56px);
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(14px, 2vw, 17px);
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      position: relative;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 17px;
+      font-weight: 700;
+      padding: 20px 52px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: opacity 0.2s;
+      position: relative;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #bbb;
+      font-size: 13px;
+    }
+    .trust-badge::before { content: '✓'; color: var(--gold); font-weight: 700; }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 80px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label { text-align: center; font-size: 11px; letter-spacing: 5px; color: var(--gold); margin-bottom: 10px; }
+    .section-title { text-align: center; font-size: clamp(22px, 4vw, 36px); margin-bottom: 16px; line-height: 1.5; }
+    .divider { width: 40px; height: 2px; background: var(--gold); margin: 0 auto 44px; }
+
+    /* ─── PROBLEM ─── */
+    .problem { background: #f5f0e8; }
+    .problem-list { list-style: none; max-width: 640px; margin: 0 auto; }
+    .problem-list li {
+      padding: 16px 20px 16px 52px;
+      margin-bottom: 10px;
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      position: relative;
+      font-size: 16px;
+    }
+    .problem-list li::before { content: '✓'; position: absolute; left: 18px; color: var(--gold); font-weight: 700; }
+    .problem-resolve {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ─── WHY ─── */
+    .why { background: var(--white); }
+    .why-body { max-width: 680px; margin: 0 auto; }
+    .why-chain {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .why-chip {
+      border: 1px solid var(--gold);
+      padding: 8px 20px;
+      font-size: 14px;
+      color: var(--accent);
+    }
+    .why-arrow {
+      width: 0; height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid var(--gold-light);
+      margin: 0 auto 32px;
+    }
+    .why-body p { font-size: 15px; color: var(--gray); text-align: center; }
+    .why-body strong { color: var(--dark); }
+
+    /* ─── CURRICULUM ─── */
+    .curriculum { background: var(--bg); }
+    .curriculum-list { display: flex; flex-direction: column; gap: 20px; }
+    .curriculum-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      background: var(--white);
+      padding: 28px;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.25s;
+    }
+    .curriculum-item:hover { border-color: var(--gold); }
+    .curriculum-num { font-size: 38px; font-weight: 700; color: var(--gold-light); line-height: 1; font-family: Georgia, serif; }
+    .curriculum-item h3 { font-size: 20px; margin-bottom: 8px; }
+    .curriculum-item p { font-size: 14px; color: var(--gray); }
+    .tag { display: inline-block; background: var(--gold-light); color: var(--accent); font-size: 11px; padding: 3px 10px; margin-bottom: 10px; letter-spacing: 1px; }
+
+    /* ─── TEPORA ─── */
+    .tepora { background: #1a1a1a; color: var(--white); }
+    .tepora .section-title { color: var(--white); }
+    .tepora-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
+    .tepora-card { border: 1px solid #444; padding: 24px; text-align: center; }
+    .tepora-card .icon { font-size: 32px; margin-bottom: 12px; }
+    .tepora-card h4 { color: var(--gold); margin-bottom: 8px; font-size: 15px; }
+    .tepora-card p { font-size: 13px; color: #aaa; }
+
+    /* ─── PHILOSOPHY ─── */
+    .philosophy { background: #f5f0e8; }
+    .philosophy-quote {
+      text-align: center;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.8;
+      color: var(--accent);
+      margin-bottom: 48px;
+      padding: 0 16px;
+    }
+    .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .philosophy-card { background: var(--white); padding: 32px 24px; border-top: 3px solid var(--gold); }
+    .philosophy-card h3 { font-size: 17px; margin-bottom: 12px; color: var(--accent); }
+    .philosophy-card p { font-size: 14px; color: var(--gray); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { background: var(--white); }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .testimonial-card {
+      border: 1px solid #e8e0d0;
+      padding: 28px;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      font-size: 80px;
+      color: var(--gold-light);
+      position: absolute;
+      top: -8px;
+      left: 16px;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+    .testimonial-card p { font-size: 14px; color: var(--gray); margin-bottom: 16px; padding-top: 32px; }
+    .testimonial-meta { font-size: 12px; color: #aaa; }
+    .testimonial-meta strong { color: var(--gold); display: block; margin-bottom: 2px; }
+    .testimonial-stars { color: var(--gold); font-size: 15px; margin-bottom: 6px; }
+    .testimonial-type { display: inline-block; background: #f5f0e8; color: var(--accent); font-size: 11px; padding: 3px 10px; margin-bottom: 10px; letter-spacing: 1px; }
+    .testimonial-category {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--accent);
+      border-left: 3px solid var(--gold);
+      padding-left: 12px;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    /* ─── OFFER ─── */
+    .offer { background: linear-gradient(135deg, #1a1a1a 0%, #3a2a1a 100%); color: var(--white); text-align: center; }
+    .offer .section-title { color: var(--white); }
+    .offer-box {
+      border: 2px solid var(--gold);
+      padding: 40px 32px;
+      max-width: 560px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .offer-badge {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 24px;
+      white-space: nowrap;
+      letter-spacing: 2px;
+    }
+    .offer-price { font-size: 48px; font-weight: 700; color: var(--gold); font-family: Georgia, serif; }
+    .offer-price span { font-size: 20px; }
+    .offer-desc { color: #ccc; font-size: 14px; margin-top: 12px; }
+    .offer-note { font-size: 12px; color: #888; margin-top: 16px; }
+
+    /* ─── PROFILE ─── */
+    .profile { background: var(--bg); }
+    .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+    .profile-card { background: var(--white); padding: 32px; }
+    .profile-avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--gold-light); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+    .profile-card h3 { font-size: 22px; margin-bottom: 4px; text-align: center; }
+    .profile-role { font-size: 12px; color: var(--gold); letter-spacing: 2px; margin-bottom: 16px; text-align: center; }
+    .profile-card p { font-size: 14px; color: var(--gray); }
+    .profile-quote {
+      border-left: 3px solid var(--gold);
+      padding-left: 16px;
+      margin-top: 20px;
+      font-size: 15px;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    /* ─── FLOW ─── */
+    .flow { background: var(--white); }
+    .flow-steps { display: flex; flex-direction: column; gap: 0; max-width: 600px; margin: 0 auto; }
+    .flow-step { display: flex; gap: 24px; align-items: flex-start; padding-bottom: 32px; position: relative; }
+    .flow-step:not(:last-child)::before { content: ''; position: absolute; left: 20px; top: 44px; bottom: 0; width: 2px; background: var(--gold-light); }
+    .flow-circle { width: 42px; height: 42px; border-radius: 50%; background: var(--gold); color: var(--dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+    .flow-step h4 { font-size: 16px; margin-bottom: 4px; }
+    .flow-step p { font-size: 14px; color: var(--gray); }
+
+    /* ─── FAQ ─── */
+    .faq { background: #f5f0e8; }
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    details { border-bottom: 1px solid #e0d8c8; padding: 20px 0; }
+    summary { cursor: pointer; font-size: 16px; font-weight: 700; list-style: none; display: flex; align-items: center; gap: 12px; }
+    summary::before { content: 'Q'; color: var(--gold); font-family: Georgia, serif; font-size: 22px; font-weight: 700; flex-shrink: 0; }
+    details[open] summary { color: var(--accent); }
+    .faq-answer { padding: 16px 0 0 34px; font-size: 14px; color: var(--gray); }
+    .faq-answer::before { content: 'A. '; color: var(--accent); font-weight: 700; }
+
+    /* ─── FINAL CTA ─── */
+    .cta-final {
+      background: linear-gradient(160deg, #1a1a1a 0%, #3a2a1a 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 100px 24px;
+    }
+    .cta-final h2 { font-size: clamp(24px, 4vw, 40px); margin-bottom: 16px; }
+    .cta-final h2 span { color: var(--gold); }
+    .cta-final p { color: #aaa; margin-bottom: 44px; font-size: 15px; }
+
+    /* ─── FOOTER ─── */
+    footer { background: #111; color: #555; text-align: center; padding: 24px; font-size: 12px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .curriculum-item { grid-template-columns: 1fr; }
+      .curriculum-num { font-size: 24px; }
+      .trust-badges { flex-direction: column; align-items: center; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <p>深伝導ボディメソッドアカデミー｜SHIN DENDŌ BODY METHOD ACADEMY</p>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-en">ESTHE PROFESSIONAL SCHOOL</p>
+  <h1>
+    月商100万円を目指す<br>
+    エステティシャンのための<br>
+    <span>身体を酷使しない、</span><br>
+    実践型アカデミー
+  </h1>
+  <p class="hero-sub">
+    業務用美容機器TEPORAの技術から、手技・栄養・集客サポートまで。<br>
+    各専門分野の講師が担当し、結果を出せる施術者へ育てます。
+  </p>
+  <a href="#contact" class="btn-primary">無料個別相談に申し込む</a>
+  <div class="trust-badges">
+    <span class="trust-badge">押し売り一切なし</span>
+    <span class="trust-badge">個別相談無料</span>
+    <span class="trust-badge">未経験からOK</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <p class="section-label">PROBLEM</p>
+    <h2 class="section-title">こんなお悩みはありませんか？</h2>
+    <div class="divider"></div>
+    <ul class="problem-list">
+      <li>エステの仕事に興味はあるが、どこで学べばいいかわからない</li>
+      <li>技術は学んだが、集客・SNSが苦手で開業に踏み出せない</li>
+      <li>機器を使った施術を提供したいが、操作を教えてくれる場所がない</li>
+      <li>お客様に「結果」を出せているか不安で、自信を持てない</li>
+      <li>美容の知識を深めたいが、栄養・睡眠まで学べるスクールがない</li>
+    </ul>
+    <p class="problem-resolve">
+      そのすべてを、このアカデミーで解決できます。
+    </p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="container">
+    <p class="section-label">WHY</p>
+    <h2 class="section-title">なぜ、技術だけでは開業できないのか</h2>
+    <div class="divider"></div>
+    <div class="why-body">
+      <div class="why-chain">
+        <span class="why-chip">技術は習得した</span>
+        <span class="why-chip">でも集客できない</span>
+        <span class="why-chip">SNSで発信できない</span>
+        <span class="why-chip">結果の出し方が不安</span>
+      </div>
+      <div class="why-arrow"></div>
+      <p>
+        エステ開業に失敗する多くの方は、<strong>技術不足ではなく「技術以外」の準備不足</strong>が原因です。<br><br>
+        施術の質・身体の知識（栄養・睡眠）・SNSでの集客力——この三つが揃って初めて、<strong>お客様に選ばれ続けるエステティシャン</strong>になれます。<br><br>
+        このアカデミーは、その三つをまとめて習得できる場所です。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum">
+  <div class="container">
+    <p class="section-label">CURRICULUM</p>
+    <h2 class="section-title">カリキュラム4本柱</h2>
+    <div class="divider"></div>
+    <div class="curriculum-list">
+
+      <div class="curriculum-item">
+        <div class="curriculum-num">01</div>
+        <div>
+          <span class="tag">機器操作</span>
+          <h3>TEPORAマシン使いこなし講座</h3>
+          <p>微弱電流×ハンドトリートメントを組み合わせた業務用美容機器「TEPORA（テポラ）」の基本操作から応用まで習得。ボディ・フェイシャル・ヘッドスパの3モードをマスターし、サロンメニューに即導入できるレベルを目指します。</p>
+        </div>
+      </div>
+
+      <div class="curriculum-item">
+        <div class="curriculum-num">02</div>
+        <div>
+          <span class="tag">手技</span>
+          <h3>エステ手技講座（ボディケア・痩身）</h3>
+          <p>ボディケアと痩身を専門とするプロの手技を直接習得。お客様の体型・悩みに合わせた施術設計を学び、「結果が出せる」エステティシャンを目指します。TEPORAとの組み合わせで相乗効果を最大化するテクニックも習得します。</p>
+        </div>
+      </div>
+
+      <div class="curriculum-item">
+        <div class="curriculum-num">03</div>
+        <div>
+          <span class="tag">インナーケア</span>
+          <h3>栄養・睡眠講座</h3>
+          <p>「施術だけでは限界がある」——その壁を越えるのが、身体の内側からのアプローチです。美容に特化した栄養学と睡眠の質向上メソッドを習得し、お客様へのホームケアアドバイスでリピート率を高めます。</p>
+        </div>
+      </div>
+
+      <div class="curriculum-item">
+        <div class="curriculum-num">04</div>
+        <div>
+          <span class="tag">経営サポート</span>
+          <h3>サロン経営コンサルティング</h3>
+          <p>サロン経営のプロがあなたの開業・売上アップを直接サポート。グループコンサルで他の受講生の事例も学びながら、メニュー設計・単価アップ・リピート戦略まで実践的に取り組みます。受講中はチャット・LINEで随時質問できる環境も完備。「月商100万円」を具体的な数字として達成するための道筋を、一緒に描きます。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEPORA -->
+<section class="tepora">
+  <div class="container">
+    <p class="section-label" style="color:var(--gold)">TECHNOLOGY</p>
+    <h2 class="section-title">業務用美容機器 TEPORA（テポラ）</h2>
+    <p style="text-align:center;color:#ccc;font-size:15px;max-width:620px;margin:0 auto 8px;">
+      「ふたつのちからで、触れるだけでは届かない深さへ」
+    </p>
+    <p style="text-align:center;color:#888;font-size:13px;max-width:620px;margin:0 auto 40px;">
+      セラピストの手を通じて低・中周波を流す次世代の美容機器。<br>
+      このアカデミーでは、TEPORAの公認指導のもとで正しい使い方を習得できます。
+    </p>
+    <div class="divider" style="background:var(--gold);margin:0 auto 40px;"></div>
+    <div class="tepora-grid">
+      <div class="tepora-card">
+        <div class="icon">⚡</div>
+        <h4>微弱電流テクノロジー</h4>
+        <p>低・中周波でインナーマッスル・アウターマッスル両層にアプローチ</p>
+      </div>
+      <div class="tepora-card">
+        <div class="icon">🩸</div>
+        <h4>血行・リンパ促進</h4>
+        <p>むくみ・くすみ改善補助、自律神経バランスのサポート</p>
+      </div>
+      <div class="tepora-card">
+        <div class="icon">💆</div>
+        <h4>3モード対応</h4>
+        <p>ボディ・フェイシャル・ヘッドスパを1台でカバー</p>
+      </div>
+      <div class="tepora-card">
+        <div class="icon">✨</div>
+        <h4>美容成分の浸透促進</h4>
+        <p>美容液・育毛剤の浸透率を高め、施術効果を最大化</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="container">
+    <p class="section-label">PHILOSOPHY</p>
+    <h2 class="section-title">アカデミーの想い</h2>
+    <div class="divider"></div>
+    <p class="philosophy-quote">
+      「本物の技術は、<br>人を幸せにする力がある。」
+    </p>
+    <div class="philosophy-grid">
+      <div class="philosophy-card">
+        <h3>技術に、根拠を持たせる</h3>
+        <p>感覚だけに頼った施術ではなく、なぜこの施術が効くのかを言語化できるエステティシャンを育てます。理論と実践の両立が、長く選ばれる技術者の土台です。</p>
+      </div>
+      <div class="philosophy-card">
+        <h3>身体の内側まで、整える</h3>
+        <p>外からの施術だけでなく、栄養・睡眠の知識でお客様の日常にまで寄り添えるプロを目指します。それが他店との、決定的な差になります。</p>
+      </div>
+      <div class="philosophy-card">
+        <h3>開業まで、一緒に歩く</h3>
+        <p>技術の習得で終わりではありません。SNS・集客・サロン運営まで、開業後も伴走し続けます。あなたの夢の実現が、私たちのゴールです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <p class="section-label">VOICE</p>
+    <h2 class="section-title">お客様・オーナーの声</h2>
+    <div class="divider"></div>
+
+    <!-- 施術を受けたお客様 -->
+    <p class="testimonial-category">施術を受けたお客様より</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>【施術を受けたお客様の声をここに記載してください】</p>
+        <div class="testimonial-meta">
+          <strong>〇〇代 女性</strong>
+          職業・状況など
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>【施術を受けたお客様の声をここに記載してください】</p>
+        <div class="testimonial-meta">
+          <strong>〇〇代 女性</strong>
+          職業・状況など
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>【施術を受けたお客様の声をここに記載してください】</p>
+        <div class="testimonial-meta">
+          <strong>〇〇代 女性</strong>
+          職業・状況など
+        </div>
+      </div>
+    </div>
+
+    <!-- TEPORAを導入したオーナー -->
+    <p class="testimonial-category" style="margin-top:56px;">TEPORAを導入したサロンオーナーより</p>
+    <div class="testimonial-grid">
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <span class="testimonial-type">美容室</span>
+        <p>時代の変化の中で、従来メニューだけでは厳しさを感じていましたが、新しい価値を提供したいと思いテポラの導入を決めました。ヘッドスパやエステ、肩こりへのアプローチなど、他店との差別化だけでなく、お客様のお悩みに対応できるようになり、関係性もより深まっています。</p>
+        <div class="testimonial-meta">
+          <strong>美容師 眞神 博久さま</strong>
+          hair+cafe KouHaku.［栃木県］
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <span class="testimonial-type">理・美容室</span>
+        <p>男のリトリート空間をコンセプトにした新店舗で、スパをセットにしたメニューに活用しています。芯からほぐし、疲れなどの悩み改善にまでつなげることができるため、自信を持って提供できます。長い目で見て、自身の負荷軽減も良いと思います。</p>
+        <div class="testimonial-meta">
+          <strong>理容師 平野 政明さま</strong>
+          Ancréal［兵庫県］
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <span class="testimonial-type">エステサロン</span>
+        <p>体験して、緩みにくかった肩や首が緩み、姿勢が整ったことに驚きました。よくあるマシンとは違い、静かで心地よい施術ながら、結果がはっきり出る点に納得しました。自律神経にも働きかける、現代に必要な基本トリートメントだと感じています。</p>
+        <div class="testimonial-meta">
+          <strong>エステティシャン 駒村 智恵子さま</strong>
+          横浜タラソテラピー凪［神奈川県］
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <span class="testimonial-type">頭痛専門サロン</span>
+        <p>小学生から大人まで幅広く安心して受けられ、施術の幅が広がりました。「体が軽くなった」「体の芯から温まり、巡りが良くなった」との声をいただいています。反り腰でお悩みの方も、施術後は「自然と良い姿勢で立てている」と変化を実感されています。</p>
+        <div class="testimonial-meta">
+          <strong>院長 柳澤 恵さま</strong>
+          Qiara頭痛専門院［愛知県］
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <span class="testimonial-type">ボディ・フェイシャルサロン</span>
+        <p>テポラを導入してから、手技だけでは届きにくかった深部のコリや巡りに対してもアプローチできるようになりました。単価２万円前後でも継続して選ばれる施術として、サロンの軸になっています。</p>
+        <div class="testimonial-meta">
+          <strong>スクール講師・セラピスト 柘植 優子さま</strong>
+          自律神経ケアサロン Haru［愛知県］
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <span class="testimonial-type">鍼灸サロン</span>
+        <p>テポラは鍼灸や手技と相性がよく、「心身を整える」という当院の理念にも通じています。当初は補助的な使用を想定していましたが、単独でも変化を実感する方が多くメニュー化しました。結果として信頼が深まり、継続的な来院につながっています。</p>
+        <div class="testimonial-meta">
+          <strong>鍼灸師 石田 舞さま</strong>
+          lumière［大阪府］
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>最初は半信半疑でしたが、実際に施術を受けて身体の変化に驚きました。身体の使い方や筋肉へのアプローチが理にかなっていて、整形外科医にも施術内容を話したところ、とても興味を持ってもらえました。実際に医療関係者の間でも話題になり、他の歯科医院でも導入が検討されていると聞いています。美容だけではなく、不調改善や身体のメンテナンスとしても非常に価値のある技術だと思います。</p>
+        <div class="testimonial-meta">
+          <strong>歯科医師</strong>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer">
+  <div class="container">
+    <p class="section-label" style="color:var(--gold)">LIMITED OFFER</p>
+    <h2 class="section-title">初回無料個別相談 実施中</h2>
+    <div class="divider"></div>
+    <div class="offer-box">
+      <span class="offer-badge">毎月先着5名様限定</span>
+      <p style="font-size:15px;color:#ccc;margin-bottom:20px;">
+        通常有料の個別カウンセリング（60分）を<br>
+        <strong style="color:var(--gold)">今月のみ無料</strong>でご提供します
+      </p>
+      <div class="offer-price">¥<span>0</span></div>
+      <p class="offer-desc">カリキュラム詳細・受講費用・スケジュールなど<br>どんなご質問にもお答えします</p>
+      <p class="offer-note">※初回ご相談の方限定。お一人様1回のみ。</p>
+    </div>
+    <br><br>
+    <a href="#contact" class="btn-primary">今すぐ無料相談を予約する</a>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="profile">
+  <div class="container">
+    <p class="section-label">INSTRUCTOR</p>
+    <h2 class="section-title">講師プロフィール</h2>
+    <div class="divider"></div>
+    <div class="profile-grid">
+
+      <div class="profile-card">
+        <div class="profile-avatar">👩</div>
+        <h3>【先輩の名前】</h3>
+        <p class="profile-role">エステ手技 / TEPORA担当</p>
+        <p>
+          【エステ経歴・実績などをここに記載】<br><br>
+          エステ業界XX年のキャリアを持ち、ボディケアと痩身を専門とする。TEPORA認定インストラクターとして、多くのセラピストへの技術指導実績を持つ。
+        </p>
+        <p class="profile-quote">
+          「本物の手技は、機械では届かない深部まで癒しと変化を届けられる。」
+        </p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-avatar">👩</div>
+        <h3>【あなたの名前】</h3>
+        <p class="profile-role">栄養・睡眠 / AI・SNS担当</p>
+        <p>
+          【あなたの経歴・実績などをここに記載】<br><br>
+          エンジニア×健康×AI講師として活動。栄養学と睡眠科学をベースにしたアプローチを提唱。AIツールを活用したSNS集客を得意とし、受講生の開業・集客サポートに力を入れている。
+        </p>
+        <p class="profile-quote">
+          「開業してからが本番。技術と集客、両方あって初めて夢が現実になる。」
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow">
+  <div class="container">
+    <p class="section-label">HOW TO START</p>
+    <h2 class="section-title">受講までの流れ</h2>
+    <div class="divider"></div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-circle">1</div>
+        <div>
+          <h4>無料個別相談に申し込む（LINEまたはフォームから）</h4>
+          <p>費用・内容・スケジュールなど、なんでもご質問いただけます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">2</div>
+        <div>
+          <h4>オンライン or 対面で個別相談（約60分・無料）</h4>
+          <p>あなたの目標・現状をヒアリングし、最適なカリキュラムをご提案します。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">3</div>
+        <div>
+          <h4>受講プランの決定・お申し込み</h4>
+          <p>ご納得いただいたうえでお申し込みをお願いします。開始日はご都合に合わせて調整できます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">4</div>
+        <div>
+          <h4>受講スタート → 開業へ</h4>
+          <p>4つのカリキュラムで技術・知識・集客力を身につけ、自信を持って開業へ。卒業後もサポートします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <details>
+        <summary>エステ未経験でも受講できますか？</summary>
+        <div class="faq-answer">はい、未経験の方でも受講いただけます。基礎から丁寧に指導しますのでご安心ください。まずは個別相談でお気軽にご相談ください。</div>
+      </details>
+      <details>
+        <summary>受講はオンラインですか？対面ですか？</summary>
+        <div class="faq-answer">カリキュラムによって異なります。手技・機器操作は対面でのご受講が必須です。栄養・SNS講座はオンラインにも対応しています。</div>
+      </details>
+      <details>
+        <summary>受講費用はどのくらいですか？</summary>
+        <div class="faq-answer">受講カリキュラムの組み合わせや期間により異なります。個別相談で詳しくお伝えします。まずはお気軽にご連絡ください。</div>
+      </details>
+      <details>
+        <summary>仕事や育児をしながら通えますか？</summary>
+        <div class="faq-answer">はい。受講スケジュールはご都合に合わせて調整可能です。週1回〜受講いただいている方も多くいます。</div>
+      </details>
+      <details>
+        <summary>卒業後のサポートはありますか？</summary>
+        <div class="faq-answer">卒業後も集客・SNS・経営に関するご相談をお受けしています。開業後も安心してサポートを受けられる環境を整えています。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final" id="contact">
+  <div class="container">
+    <h2>次は、<span>あなた</span>が<br>夢を現実にする番です。</h2>
+    <p>まずは無料個別相談から。LINEでお気軽にご相談ください。<br>押し売りは一切しません。</p>
+    <a href="https://lin.ee/XXXXXXXX" class="btn-primary">LINEで無料相談する</a>
+    <div class="trust-badges" style="margin-top:20px;">
+      <span class="trust-badge">押し売り一切なし</span>
+      <span class="trust-badge">個別相談無料</span>
+      <span class="trust-badge">未経験からOK</span>
+    </div>
+    <br><br>
+    <!-- Google フォーム埋め込み欄 -->
+    <div style="background:#222;border:1px solid #444;padding:28px;max-width:500px;margin:0 auto;text-align:left;">
+      <p style="color:#888;font-size:13px;text-align:center;margin-bottom:8px;">▼ お問い合わせフォーム</p>
+      <p style="color:#aaa;font-size:13px;text-align:center;">
+        ここにGoogle フォームの埋め込みコードを貼り付けてください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 深伝導ボディメソッドアカデミー All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
